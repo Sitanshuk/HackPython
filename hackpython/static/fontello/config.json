@@ -1,0 +1,40 @@
+{
+  "name": "",
+  "css_prefix_text": "icon-",
+  "css_use_suffix": false,
+  "hinting": true,
+  "units_per_em": 1000,
+  "ascent": 850,
+  "glyphs": [
+    {
+      "uid": "0eabe5f8d71cc838484ff39436426d2d",
+      "css": "heart",
+      "code": 59392,
+      "src": "entypo"
+    },
+    {
+      "uid": "862129f833b09f3d34ae39acf8484a7b",
+      "css": "heart-broken",
+      "code": 61480,
+      "src": "mfglabs"
+    },
+    {
+      "uid": "c053ebe321823b081483d332b06eee54",
+      "css": "gauge",
+      "code": 59393,
+      "src": "elusive"
+    },
+    {
+      "uid": "7e4164950ffa4990961958b2d6318658",
+      "css": "info-circled",
+      "code": 59394,
+      "src": "entypo"
+    },
+    {
+      "uid": "6364d85e960f23b9a843a506387e7970",
+      "css": "info-outline",
+      "code": 59395,
+      "src": "typicons"
+    }
+  ]
+}
