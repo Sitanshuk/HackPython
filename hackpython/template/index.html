@@ -27,8 +27,81 @@
 
     <link href="{% static 'font/css/fontello.css' %}" rel="stylesheet">
     <link href="{% static 'fontello/css/fontello.css' %}" rel="stylesheet">
+    <style>
+    body {font-family: Arial, Helvetica, sans-serif;}
+    * {box-sizing: border-box;}
 
-    
+    /* Button used to open the chat form - fixed at the bottom of the page */
+    .open-button {
+      background-color: #555;
+      color: white;
+      padding: 16px 20px;
+      border: none;
+      cursor: pointer;
+      opacity: 0.8;
+      position: fixed;
+      bottom: 23px;
+      right: 28px;
+      width: 280px;
+    }
+
+    /* The popup chat - hidden by default */
+    .chat-popup {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      right: 15px;
+      border: 3px solid #f1f1f1;
+      z-index: 9;
+    }
+
+    /* Add styles to the form container */
+    .form-container {
+      max-width: 300px;
+      padding: 10px;
+      background-color: white;
+    }
+
+    /* Full-width textarea */
+    .form-container textarea {
+      width: 100%;
+      padding: 15px;
+      margin: 5px 0 22px 0;
+      border: none;
+      background: #f1f1f1;
+      resize: none;
+      min-height: 200px;
+    }
+
+    /* When the textarea gets focus, do something */
+    .form-container textarea:focus {
+      background-color: #ddd;
+      outline: none;
+    }
+
+    /* Set a style for the submit/send button */
+    .form-container .btn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 16px 20px;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      margin-bottom:10px;
+      opacity: 0.8;
+    }
+
+    /* Add a red background color to the cancel button */
+    .form-container .cancel {
+      background-color: red;
+    }
+
+    /* Add some hover effects to buttons */
+    .form-container .btn:hover, .open-button:hover {
+      opacity: 1;
+    }
+  </style>
+
 </head>
 
 <body id="page-top">
@@ -42,97 +115,113 @@
 
     </div>
     <div class="d-flex flex-row-reverse d-flex justify-content-end" style="margin-left: 4vw;">
-    <ul class="navbar-nav ml-auto ml-md-0" >
-      <li class="nav-item dropdown no-arrow mx-1 p-2" >
-        {%  if user.is_authenticated %}
-        <a href="../dashboard/"><i class="icon-gauge" style="color: #cbd0d8;"></i></a>
-        {% endif %}
-      </li>
-          <div class="float-md-right">
-            <li class="nav-item dropdown no-arrow" >
-              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-user-circle fa-fw"></i>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                {%  if user.is_authenticated %}
-                <h4 class="dropdown-item">{{ user.username }}</h4>
-                <a class="dropdown-item" href="../customize">Settings</a>
-                <a class="dropdown-item" href="../../account/password_reset">Change Password</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
-                {% else %}
+      <ul class="navbar-nav ml-auto ml-md-0" >
+        <li class="nav-item dropdown no-arrow mx-1 p-2" >
+          {%  if user.is_authenticated %}
+          <a href="../dashboard/"><i class="icon-gauge" style="color: #cbd0d8;"></i></a>
+          {% endif %}
+        </li>
+        <div class="float-md-right">
+          <li class="nav-item dropdown no-arrow" >
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-user-circle fa-fw"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+              {%  if user.is_authenticated %}
+              <h4 class="dropdown-item">{{ user.username }}</h4>
+              <a class="dropdown-item" href="../customize">Settings</a>
+              <a class="dropdown-item" href="../../account/password_reset">Change Password</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
+              {% else %}
 
-                <a class="dropdown-item" href="/account/login/">Login</a>
-                <a class="dropdown-item" href="/account/register/">Register</a>
-                {%  endif %}
-              </div>
-            </li>
-          </div>
-        </ul>
-      </nav>
+              <a class="dropdown-item" href="/account/login/">Login</a>
+              <a class="dropdown-item" href="/account/register/">Register</a>
+              {%  endif %}
+            </div>
+          </li>
+        </div>
+      </ul>
+    </nav>
+  </div>
+  <div id="wrapper">
+
+    <div id="content-wrapper">
+
+      <div class="container-fluid">
+
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="#">HackPython</a>
+          </li>
+          <li class="breadcrumb-item active">Home</li>
+        </ol>
+        <button class="open-button" onclick="openForm()">Chat</button>
+
+        <div class="chat-popup" id="myForm">
+          <form class="form-container" method="POST">
+            {% csrf_token %}
+            <h1>Chat</h1>
+
+            <label for="msg"><b>Message</b></label>
+            <textarea placeholder="Type message.." name="msg" required></textarea>
+
+            <button type="submit" class="btn">Send</button>
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+          </form>
+        </div>
+
+      </div>
     </div>
-      <div id="wrapper">
+  </div>
 
-        <div id="content-wrapper">
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
 
-          <div class="container-fluid">
-
-            <!-- Breadcrumbs-->
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item">
-                <a href="#">HackPython</a>
-              </li>
-              <li class="breadcrumb-item active">Home</li>
-            </ol>
-  
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-      <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="/account/logout/">Logout</a>
-          </div>
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="/account/logout/">Logout</a>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
-    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <!-- Bootstrap core JavaScript-->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+  <!-- Core plugin JavaScript-->
+  <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
 
-    <!-- Page level plugin JavaScript-->
-    <script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
-    <script src="{% static 'vendor/datatables/jquery.dataTables.js' %}"></script>
-    <script src="{% static 'vendor/datatables/dataTables.bootstrap4.js' %}"></script>
+  <!-- Page level plugin JavaScript-->
+  <script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
+  <script src="{% static 'vendor/datatables/jquery.dataTables.js' %}"></script>
+  <script src="{% static 'vendor/datatables/dataTables.bootstrap4.js' %}"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="{% static 'js/sb-admin.min.js' %}"></script>
+  <!-- Custom scripts for all pages-->
+  <script src="{% static 'js/sb-admin.min.js' %}"></script>
+  <script>
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
 
-    <!-- Demo scripts for this page-->
-    <script src="{% static 'js/demo/datatables-demo.js' %}"></script>
-    <script src="{% static 'js/demo/chart-area-demo.js' %}"></script>
-
-    <script type="text/javascript"> 
-      $('#dataTable').dataTable( {
-        "sDom": '<"wrapper"lfptip>',
-
-      } );
-    </script>
-  </body>
-  </html>
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>
+</body>
+</html>

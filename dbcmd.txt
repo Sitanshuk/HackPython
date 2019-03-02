@@ -1,0 +1,94 @@
+-- Table: public.chatbot_profile
+
+-- DROP TABLE public.chatbot_profile;
+
+CREATE TABLE public.chatbot_profile
+(
+    id integer NOT NULL DEFAULT nextval('announcement_profile_id_seq'::regclass),
+    user_id integer NOT NULL,
+    email_confirmed boolean NOT NULL,
+    CONSTRAINT announcement_profile_pkey PRIMARY KEY (id),
+    CONSTRAINT announcement_profile_user_id_key UNIQUE (user_id)
+,
+    CONSTRAINT announcement_profile_user_id_f2b155d5_fk_auth_user_id FOREIGN KEY (user_id)
+        REFERENCES public.auth_user (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        DEFERRABLE INITIALLY DEFERRED
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.chatbot_profile
+    OWNER to postgres;
+
+
+
+-- Table: public.transaction
+
+-- DROP TABLE public.transaction;
+
+CREATE TABLE public.transaction
+(
+    t_id bigint NOT NULL,
+    "timestamp" timestamp(6) with time zone NOT NULL,
+    status character varying(10) COLLATE pg_catalog."default",
+    amount bigint NOT NULL,
+    CONSTRAINT transaction_pkey PRIMARY KEY (t_id)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.transaction
+    OWNER to postgres;
+
+
+
+-- Table: public.loan
+
+-- DROP TABLE public.loan;
+
+CREATE TABLE public.loan
+(
+    l_id bigint NOT NULL,
+    t_id bigint,
+    CONSTRAINT loan_pkey PRIMARY KEY (l_id),
+    CONSTRAINT loan_t_id_fkey FOREIGN KEY (t_id)
+        REFERENCES public.transaction (t_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.loan
+    OWNER to postgres;
+
+
+-- Table: public.deposit
+
+-- DROP TABLE public.deposit;
+
+CREATE TABLE public.deposit
+(
+    d_id bigint NOT NULL,
+    t_id bigint,
+    CONSTRAINT deposit_pkey PRIMARY KEY (d_id),
+    CONSTRAINT deposit_t_id_fkey FOREIGN KEY (t_id)
+        REFERENCES public.transaction (t_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.deposit
+    OWNER to postgres;
