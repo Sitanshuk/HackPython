@@ -10,6 +10,12 @@ from .views import (
 	post_register,
 	dashboard,
 	activate,
+    eduloans,
+    personalloans,
+    homeloans,
+    savings,
+    current,
+    deposit,
     error,
 	)
 
@@ -25,8 +31,14 @@ urlpatterns = [
     re_path(r'logout/$',post_logout,name='logout'),
     re_path(r'register/$',post_register),
     re_path(r'dashboard/$',dashboard, name = 'dashboard'),
+    re_path(r'EducationalLoans/$',eduloans, name = 'eduloans'),
+    re_path(r'PersonalLoans/$',personalloans, name = 'personalloans'),
+    re_path(r'HomeLoans/$',homeloans, name = 'homeloans'),
+    re_path(r'Savings/$',savings, name = 'savings'),
+    re_path(r'Current/$',current, name = 'current'),
+    re_path(r'Deposit/$',deposit, name = 'deposit'),    
     re_path(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',activate, name='activate'),
-    re_path(r'$',error,),
+    # re_path(r'$',error,),
 
 
 ]
