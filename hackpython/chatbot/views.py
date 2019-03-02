@@ -108,3 +108,21 @@ def activate(request, uidb64, token):
 
 def dashboard(request):
 	return render(request,"dashboard.html",{})		
+
+def eduloans(request):
+	return render(request,"eduloan.html",{})
+
+def personalloans(request):
+	return render(request,"Personal Loan.html",{})
+
+def homeloans(request):
+	return render(request,"homeloan.html",{})
+
+def deposit(request):
+	return render(request,"deposit.html",{})		
+
+def savings(request):
+	return render(request,"savingsacc.html",{})
+
+def current(request):
+	return render(request,"currentacc.html",{})
