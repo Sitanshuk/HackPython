@@ -1,5 +1,5 @@
   {% load static %}
-  {% load crispy_forms_tags %}  
+  {% load crispy_forms_tags %} 
   <!DOCTYPE html>
   <html lang="en">
 
@@ -27,6 +27,18 @@
 
     <link href="{% static 'font/css/fontello.css' %}" rel="stylesheet">
     <link href="{% static 'fontello/css/fontello.css' %}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/chat_interface.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/temporary.css' %}">
+<!-- <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300|Open+Sans:300|Oxygen|Material+Icons" rel="stylesheet"> -->
+    <!-- <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script> -->
+    <!-- Latest compiled and minified CSS -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+
+    <!-- Optional theme -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"> -->
+
+    <!-- Latest compiled and minified JavaScript -->
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
 </head>
 
 <body id="page-top">
@@ -133,7 +145,31 @@
           </li>
           <li class="breadcrumb-item active">Home</li>
         </ol>
-        
+       <div class="row">
+    <div class="col-sm-6">
+        <div class="row">
+            <div class="chat_window">
+                <ul class="messages"></ul>
+                <div class="bottom_wrapper clearfix">
+                    <div class="message_input_wrapper">
+                        <input id="msg_input" class="message_input" placeholder="Say Hi to begin chat..." />
+                    </div>
+                    <div class="send_message">
+                         <div class="text">send</div>
+                    </div>
+                </div>
+            </div>
+            <div class="message_template">
+                <li class="message">
+                    <div class="avatar"></div>
+                    <div class="text_wrapper">
+                        <div class="text"></div>
+                    </div>
+                </li>
+            </div>
+        </div>
+    </div>
+</div>
       </div>
     </div>
   </div>
@@ -185,5 +221,6 @@ function closeForm() {
   document.getElementById("myForm").style.display = "none";
 }
 </script>
+<script src="{% static 'js/bind.js' %}"></script>
 </body>
 </html>
