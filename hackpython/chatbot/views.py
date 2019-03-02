@@ -126,3 +126,13 @@ def savings(request):
 
 def current(request):
 	return render(request,"currentacc.html",{})
+
+
+def chat(request):
+	return render(request,"chat.html",{})
+
+def readmorei(request):
+	return render(request,"readmorei.html",{})
+
+def readmoref(request):
+	return render(request,"readmoref.html",{})
