@@ -1,6 +1,7 @@
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+import socket
 # from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from django.contrib.auth import(authenticate,
@@ -16,7 +17,7 @@ from django.template.loader import render_to_string
 from .tokens import account_activation_token
 from .form import SignupForm,LoginForm
 
-
+from .models import Userd
 
 from django.http import HttpResponse, JsonResponse
 from django.core.mail import EmailMessage
@@ -31,11 +32,29 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 
 credit_card_thresh = 300
+credit_score = 0
+bal = 0
+email = None
+base_limit = 0
+
+def ask_q(q):
+    m = q
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
+    host = '127.0.0.1'
+    port = 9999
+    s.connect((host, port))                               
+    s.send(m.encode('ascii'))
+    msg = None
+    while not msg:
+        msg = s.recv(8192)
+    else:
+        return msg.decode('ascii')
+    s.close()
 
 
 class Links:
     checkout_message = "You can checkout further information in the following link: "
-    personal_loan_link = "personal loan"
+    personal_loan_link = "127.0.0.1:8000/chatbot/EducationalLoans"
     error_msg = "Sorry, we couldn't find any response!!"
 
 
@@ -53,7 +72,8 @@ def get_general_info_from_db(parameter):
 
 def get_user_specific_info(parameter):
     # connect to db and retrieve db dict.
-    db_info = {'credit score': "350", 'balance': 20000, 'base limit': 1000, 'uname': 'RishabhBhatnagar'}
+    global base_limit, bal, email, credit_score
+    db_info = {'credit score': 350, 'balance': 20000 , 'base limit': 5000, 'uname': 'Bhushan Borole'}
     return get_info_from_db_dict(parameter, db_info)
 
 
@@ -170,11 +190,21 @@ def chat(request):
 
 @csrf_exempt
 def post_announcement(request):
-    global isClosingCard
+    global isClosingCard, base_limit, bal, email, credit_score
+    # print(AuthUser)
+    # base_limit = request.user.base_limit
+    # bal = request.authuser.account_bal
+    email = request.user.username
+    # credit_score = request.autouser.credit_score
+
     """
     chat end point that performs NLU using rasa.ai
     and constructs response from response.py
     """
+    try:
+        pass
+    except:
+        pass
     start = None
     try:
         if request.method == 'POST':
@@ -223,6 +253,8 @@ def post_announcement(request):
                 response_text = IntentMapping.loan_personal()
             else:
                 response_text = ''
+            
+
             global chequeBookAddress
             print(chequeBookAddress, "chequeBookAddress")
             if chequeBookAddress == 1:
@@ -251,8 +283,10 @@ def post_announcement(request):
             else:
                 # rishab = json.loads('{"status": "success", "response": {}}'.format(response_text))
                 # return rishab
+                
+                if not response_text:
+                    response_text = ask_q(request.POST['text'])
                 return JsonResponse({"status": "success", "response": response_text})
-
     except Exception as e:
         print(e)
         from traceback import print_exc
