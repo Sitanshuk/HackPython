@@ -59,7 +59,7 @@
           {% endif %}
         </li>
         <li class="nav-item dropdown no-arrow mx-1 p-2" >
-          <a href="../chat/"><i class="far fa-comments" style="color: #cbd0d8;"></i></a>
+          <!-- <a href="../chat/"><i class="far fa-comments" style="color: #cbd0d8;"></i></a> -->
         </li>
         
         <div class="float-md-right">
@@ -152,16 +152,20 @@
                 <ul class="messages"></ul>
                 <div class="bottom_wrapper clearfix">
                     <div class="message_input_wrapper">
-                        <input id="msg_input" class="message_input" placeholder="Say Hi to begin chat..." />
+                      <form method="POST">{% csrf_token %}
+
+                        <input id="msg_input"  class="message_input" placeholder="Say Hi to begin chat..." name="text" />
+                        <input type="submit" name="text2">
                     </div>
+
                     <div class="send_message">
-                         <div class="text">send</div>
+                         <div class="text">text</div>
                     </div>
                 </div>
             </div>
+          </form>
             <div class="message_template">
                 <li class="message">
-                    <div class="avatar"></div>
                     <div class="text_wrapper">
                         <div class="text"></div>
                     </div>

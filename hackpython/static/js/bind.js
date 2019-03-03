@@ -1,11 +1,12 @@
 var data=[];
-
 function addBr(text){
+
     return text.replace(/\n/g, "<br />");
 
 }
 var Message;
 Message = function (arg) {
+
     this.text = arg.text, this.message_side = arg.message_side;
     this.draw = function (_this) {
         return function () {
@@ -23,6 +24,7 @@ Message = function (arg) {
 
 
 function showBotMessage(msg){
+
         message = new Message({
              text: msg,
              message_side: 'left'
@@ -31,6 +33,7 @@ function showBotMessage(msg){
         $messages.animate({ scrollTop: $messages.prop('scrollHeight') }, 300);
 }
 function showUserMessage(msg){
+
         $messages = $('.messages');
         message = new Message({
             text: msg,
@@ -41,11 +44,12 @@ function showUserMessage(msg){
         $('#msg_input').val('');
 }
 function sayToBot(text){
-    document.getElementById("msg_input").placeholder = "Type your messages here..."
-    $.post("/chat",
+    document.getElementById("msg_input").placeholder = "Type your messages here...";
+
+    $.post("../home/",
             {
-                //csrfmiddlewaretoken:csrf,
-                text:text,
+'csrfmiddlewaretoken': '{{ csrf_token }}',                
+'text':text,
             },
             function(jsondata, status){
                 if(jsondata["status"]=="success"){
@@ -54,6 +58,19 @@ function sayToBot(text){
                     if(response){showBotMessage(response);}
                 }
             });
+
+    // $.ajax({
+    //     type: 'POST',
+    //     url: '../home/',
+    //     'csrfmiddlewaretoken': '{{ csrf_token }}',
+    //     data: {
+    //         'text': text
+    //     },
+    //     success: function(response){
+    //         alert(response);
+    //         console.log(response)
+    //     }
+    // });
 
 }
 
@@ -64,12 +81,14 @@ getMessageText = function () {
         };
 
 $("#say").keypress(function(e) {
+
     if(e.which == 13) {
         $("#saybtn").click();
     }
 });
 
 $('.send_message').click(function (e) {
+
         msg = getMessageText();
         if(msg){
         showUserMessage(msg);
@@ -78,10 +97,12 @@ $('.send_message').click(function (e) {
 });
 
 $('.message_input').keyup(function (e) {
+
     if (e.which === 13) {
         msg = getMessageText();
         if(msg){
         showUserMessage(msg);
+
         sayToBot(msg);
     $('.message_input').val('') ;}
     }
