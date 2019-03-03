@@ -52,9 +52,10 @@ function sayToBot(text){
 'text':text,
             },
             function(jsondata, status){
+                // alert("Error!")
                 if(jsondata["status"]=="success"){
                     response=jsondata["response"];
-
+                    // alert(response);    
                     if(response){showBotMessage(response);}
                 }
             });
