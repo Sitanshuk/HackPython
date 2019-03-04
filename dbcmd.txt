@@ -92,3 +92,9 @@ TABLESPACE pg_default;
 
 ALTER TABLE public.deposit
     OWNER to postgres;
+
+
+
+
+
+python -m rasa_nlu.server --path AI-engine/projects
