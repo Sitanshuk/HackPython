@@ -20,8 +20,16 @@ Steps:<br/>
  
 Contributors<br/>
 <p align="center">
-<img src="https://github.com/Sitanshuk/HackPython/blob/master/hackpython/static/profile/profile_Sitanshuk.JPG" height="300vh">
-<img src="https://github.com/Sitanshuk/HackPython/blob/master/hackpython/static/profile/profile_bhushan-borole.JPG"  height="300vh">
-<img src="https://github.com/Sitanshuk/HackPython/blob/master/hackpython/static/profile/profile_rishabhbhatnagar.JPG"  height="300vh">
-<img src="https://github.com/Sitanshuk/HackPython/blob/master/hackpython/static/profile/profile_shohna.JPG"  height="300vh">
+<a href="https://github.com/Sitanshuk">
+  <img src="https://github.com/Sitanshuk/HackPython/blob/master/hackpython/static/profile/profile_Sitanshuk.JPG" height="300vh">
+</a>
+<a href="https://github.com/bhushan-borole">
+  <img src="https://github.com/Sitanshuk/HackPython/blob/master/hackpython/static/profile/profile_bhushan-borole.JPG"  height="300vh">
+</a>
+<a href="https://github.com/RishabhBhatnagar">
+  <img src="https://github.com/Sitanshuk/HackPython/blob/master/hackpython/static/profile/profile_rishabhbhatnagar.JPG"  height="300vh">
+</a>  
+<a href="https://github.com/shohna">  
+  <img src="https://github.com/Sitanshuk/HackPython/blob/master/hackpython/static/profile/profile_shohna.JPG"  height="300vh">
+</a>
 </p>
