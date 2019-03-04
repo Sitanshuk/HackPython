@@ -1,0 +1,405 @@
+{
+  "rasa_nlu_data": {
+    "common_examples": [
+      {
+        "intent": "greet",
+        "text": "hey"
+      },
+      {
+        "intent": "greet",
+        "text": "howdy"
+      },
+      {
+        "intent": "greet",
+        "text": "hey there"
+      },
+      {
+        "intent": "greet",
+        "text": "hello"
+      },
+      {
+        "intent": "greet",
+        "text": "hi"
+      },
+      {
+        "intent": "affirm",
+        "text": "yes"
+      },
+      {
+        "intent": "affirm",
+        "text": "yep"
+      },
+      {
+        "intent": "affirm",
+        "text": "yeah"
+      },
+      {
+        "intent": "goodbye",
+        "text": "bye"
+      },
+      {
+        "intent": "goodbye",
+        "text": "goodbye"
+      },
+      {
+        "intent": "goodbye",
+        "text": "good bye"
+      },
+      {
+        "intent": "goodbye",
+        "text": "stop"
+      },
+      {
+        "intent": "affirm",
+        "text": "indeed"
+      },
+      {
+        "intent": "affirm",
+        "text": "that's right"
+      },
+      {
+        "intent": "affirm",
+        "text": "ok"
+      },
+      {
+        "intent": "affirm",
+        "text": "great"
+      },
+      {
+        "intent": "greet",
+        "text": "what's up?"
+      },
+      {
+        "intent": "new_card",
+        "entities": [
+          {
+            "start": 13,
+            "end": 24,
+            "value": "credit card",
+            "entity": "card_type"
+          }
+        ],
+        "text": "I want a new credit card"
+      },
+      {
+        "intent": "new_card",
+        "entities": [
+          {
+            "start": 17,
+            "end": 28,
+            "value": "credit card",
+            "entity": "card_type"
+          }
+        ],
+        "text": "how to get a new credit card?"
+      },
+      {
+        "intent": "new_card",
+        "entities": [
+          {
+            "start": 0,
+            "end": 11,
+            "value": "credit card",
+            "entity": "card_type"
+          }
+        ],
+        "text": "credit card"
+      },
+      {
+        "intent": "new_card",
+        "entities": [
+          {
+            "start": 4,
+            "end": 15,
+            "value": "credit card",
+            "entity": "card_type"
+          }
+        ],
+        "text": "new credit card"
+      },
+      {
+        "intent": "lost_card",
+        "text": "I've lost my credit card"
+      },
+      {
+        "intent": "lost_card",
+        "text": "my credit card is not working."
+      },
+      {
+        "intent": "lost_card",
+        "text": "my credit card is damaged"
+      },
+      {
+        "intent": "lost_card",
+        "text": "I want to close my credit card"
+      },
+      {
+        "intent": "lost_card",
+        "text": "my credit card is stolen!"
+      },
+      {
+        "intent": "lost_card",
+        "text": "Someone has stolen my credit card"
+      },
+      {
+        "intent": "lost_card",
+        "text": "my credit card got damaged"
+      },
+      {
+        "intent": "lost_card",
+        "text": "I am unable to find my credit card"
+      },
+      {
+        "intent": "summary",
+        "text": "Account Summary "
+      },
+      {
+        "intent": "summary",
+        "text": "show me the summary of my account "
+      },
+      {
+        "intent": "show_balance",
+        "text": "account balance please "
+      },
+      {
+        "intent": "summary",
+        "text": "Account status "
+      },
+      {
+        "intent": "transaction",
+        "text": "my last transaction "
+      },
+      {
+        "intent": "transaction",
+        "text": "transaction list "
+      },
+      {
+        "intent": "transaction",
+        "text": "transaction log"
+      },
+      {
+        "intent": "transaction",
+        "text": "transaction time period "
+      },
+      {
+        "intent": "transaction",
+        "text": "can you show me my recent transactions"
+      },
+      {
+        "intent": "transaction",
+        "text": "what did i shop using my credit card"
+      },
+      {
+        "intent": "transaction",
+        "text": "how much money did i spent in my last transaction"
+      },
+      {
+        "intent": "credit_card_limit",
+        "text": "what is the balance limit of my credit card"
+      },
+      {
+        "intent": "credit_card_limit",
+        "text": "how much i can spend using my credit card"
+      },
+      {
+        "intent": "credit_card_limit",
+        "text": "when will my credit card expire"
+      },
+      {
+        "intent": "credit_card_limit",
+        "text": "when to renew my credit card"
+      },
+      {
+        "intent": "credit_card_limit",
+        "text": "expiration date of my credit card"
+      },
+      {
+        "intent": "transfer_credit_card_ownership",
+        "text": "how can i transfer the ownership of my credit card"
+      },
+      {
+        "intent": "credit_card_limit",
+        "text": "how to extend the credit limit of my credit card"
+      },
+      {
+        "intent": "new_card",
+        "entities": [
+          {
+            "start": 16,
+            "end": 26,
+            "value": "debit card",
+            "entity": "card_type"
+          }
+        ],
+        "text": "how can i get a debit card"
+      },
+      {
+        "intent": "new_card",
+        "entities": [
+          {
+            "start": 19,
+            "end": 29,
+            "value": "debit card",
+            "entity": "card_type"
+          }
+        ],
+        "text": "how can i renew my debit card"
+      },
+      {
+        "intent": "new_card",
+        "entities": [
+          {
+            "start": 24,
+            "end": 35,
+            "value": "debit card ",
+            "entity": "card_type"
+          }
+        ],
+        "text": "what is the limit of my debit card "
+      },
+      {
+        "intent": "debit_card_summary",
+        "entities": [
+          {
+            "start": 19,
+            "end": 29,
+            "value": "debit card",
+            "entity": "card_type"
+          }
+        ],
+        "text": "shopping log of my debit card"
+      },
+      {
+        "intent": "change_password",
+        "entities": [
+          {
+            "start": 33,
+            "end": 43,
+            "value": "debit card",
+            "entity": "card_type"
+          }
+        ],
+        "text": "how to change the password of my debit card"
+      },
+      {
+        "intent": "change_password",
+        "text": "how to set a new password"
+      },
+      {
+        "intent": "debit_card_summary",
+        "entities": [
+          {
+            "start": 50,
+            "end": 60,
+            "value": "debit card",
+            "entity": ""
+          }
+        ],
+        "text": "how many transaction i can do in one day using my debit card"
+      },
+      {
+        "intent": "lost_card",
+        "text": "how to turn off my lost debit card"
+      },
+      {
+        "intent": "lost_card",
+        "text": "I have lost my credit card"
+      },
+      {
+        "intent": "lost_card",
+        "text": "I have lost my credit card"
+      },
+      {
+        "intent": "new_card",
+        "entities": [
+          {
+            "start": 16,
+            "end": 26,
+            "value": "debit card",
+            "entity": "card_type"
+          }
+        ],
+        "text": "I want to get a debit card"
+      },
+      {
+        "intent": "new_card",
+        "entities": [
+          {
+            "start": 17,
+            "end": 27,
+            "value": "debit card",
+            "entity": "card_type"
+          }
+        ],
+        "text": "how to get a new debit card"
+      },
+      {
+        "intent": "new_card",
+        "entities": [
+          {
+            "start": 0,
+            "end": 10,
+            "value": "debit card",
+            "entity": "card_type"
+          }
+        ],
+        "text": "debit card"
+      },
+      {
+        "intent": "new_card",
+        "entities": [
+          {
+            "start": 4,
+            "end": 14,
+            "value": "debit card",
+            "entity": "card_type"
+          }
+        ],
+        "text": "new debit card"
+      },
+      {
+        "intent": "new_card",
+        "entities": [
+          {
+            "start": 9,
+            "end": 19,
+            "value": "debit card",
+            "entity": "card_type"
+          }
+        ],
+        "text": "I want a debit card for me"
+      },
+      {
+        "intent": "new_card",
+        "entities": [
+          {
+            "start": 9,
+            "end": 20,
+            "value": "credit card",
+            "entity": "card_type"
+          }
+        ],
+        "text": "I want a credit card for me"
+      },
+      {
+        "intent": "show_balance",
+        "text": "what is my current account balance?"
+      },
+      {
+        "intent": "show_balance",
+        "text": "How much money do I have in my account right now?"
+      },
+      {
+        "intent": "summary",
+        "text": "What is the current condition of my account?"
+      },
+      {
+        "intent": "show_balance",
+        "text": "How much money do I have left in my account?"
+      }
+    ],
+    "regex_features": [],
+    "lookup_tables": [],
+    "entity_synonyms": []
+  }
+}

@@ -16,6 +16,9 @@ from .views import (
     savings,
     current,
     deposit,
+    chat,
+    readmorei,
+    readmoref,
     error,
 	)
 
@@ -36,7 +39,10 @@ urlpatterns = [
     re_path(r'HomeLoans/$',homeloans, name = 'homeloans'),
     re_path(r'Savings/$',savings, name = 'savings'),
     re_path(r'Current/$',current, name = 'current'),
-    re_path(r'Deposit/$',deposit, name = 'deposit'),    
+    re_path(r'Deposit/$',deposit, name = 'deposit'),
+    re_path(r'chat/$',chat, name = 'chat'),    
+    re_path(r'readmorei/$',readmorei, name = 'readmorei'),  
+    re_path(r'readmoref/$',readmoref, name = 'readmoref'),  
     re_path(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',activate, name='activate'),
     # re_path(r'$',error,),
 
